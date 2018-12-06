@@ -33,6 +33,12 @@ function defaultChoice(bucket) {
   return bucket.choices[0];
 }
 
+let track = () => {};
+
+export function setTracker(tracker) {
+  track = tracker;
+}
+
 export default class Personalized extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +64,7 @@ export default class Personalized extends Component {
   }
 
   registerChoice(choice) {
-    this.props.track && this.props.track(this.props.bucket.name, choice);
+    track(this.props.bucket.name, choice);
     return this.setState({ choice });
   }
 

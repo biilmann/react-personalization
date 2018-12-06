@@ -10,7 +10,6 @@ export default () => (
       fallback={<div>Loading...</div>}
       bucket={bucket}
       render={choice => {
-        console.log("Choice was: %o", choice);
         switch (choice) {
           case "a":
             return <h1>This is what we're all about</h1>;
