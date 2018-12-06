@@ -6,8 +6,10 @@ const bucket = randomBucket("random", ["a", "b"]);
 
 export default () => (
   <div>
-    <Personalized fallback={<div>Loading...</div>} bucket={bucket}>
-      {choice => {
+    <Personalized
+      fallback={<div>Loading...</div>}
+      bucket={bucket}
+      render={choice => {
         console.log("Choice was: %o", choice);
         switch (choice) {
           case "a":
@@ -16,7 +18,7 @@ export default () => (
             return <h1>React Static is all about:</h1>;
         }
       }}
-    </Personalized>
+    />
     <p>
       React, static sites, performance, speed. It's the stuff that makes us
       tick.

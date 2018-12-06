@@ -40,18 +40,26 @@ export default class Personalized extends Component {
   }
 
   componentWillMount() {
+    if (typeof document === "undefined") {
+      return;
+    }
     const choice = getCookie(this.props.bucket);
     if (choice) {
-      return this.setState({ choice });
+      return this.registerChoice(choice);
     }
     fetchChoice(this.props.bucket).then(choice => {
       if (this.state.canceled) {
         return;
       }
       setCookie(this.props.bucket, choice);
-      this.setState({ choice });
+      this.registerChoice(choice);
     });
     setTimeout(this.onSLA, SLA);
+  }
+
+  registerChoice(choice) {
+    this.props.track && this.props.track(this.props.bucket.name, choice);
+    return this.setState({ choice });
   }
 
   onSLA = () => {
@@ -68,7 +76,7 @@ export default class Personalized extends Component {
     const { fallback } = this.props;
 
     return choice
-      ? this.props.children(choice)
+      ? this.props.render(choice)
       : fallback || <div className="personalized-fallback" />;
   }
 }
