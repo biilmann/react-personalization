@@ -21,6 +21,24 @@ export default withSiteData(() => (
       }}
     />
 
-    <p>With cookie fixation and both random and function based bucketing</p>
+    <Personalized
+      bucket={bucket}
+      fallback={<p>...</p>}
+      render={choice => {
+        switch (choice) {
+          case "es":
+            return (
+              <p>Implementatondo fixacion de los cookies y con bucketing</p>
+            );
+          default:
+            return (
+              <p>
+                With cookie fixation and both random and function based
+                bucketing
+              </p>
+            );
+        }
+      }}
+    />
   </div>
 ));

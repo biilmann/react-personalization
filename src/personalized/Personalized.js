@@ -21,9 +21,15 @@ function setCookie(bucket, choice) {
   return cookie.set(cookieKey(bucket.name), choice);
 }
 
+const choices = {};
+
 function fetchChoice(bucket) {
+  if (choices[bucket.name]) {
+    return Promise.resolve(choices[bucket.name]);
+  }
   try {
-    return Promise.resolve(bucket.choose());
+    choices[bucket.name] = bucket.choose();
+    return Promise.resolve(choices[bucket.name]);
   } catch (err) {
     return Promise.reject(err);
   }
