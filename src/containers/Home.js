@@ -11,33 +11,22 @@ export default withSiteData(() => (
     <Personalized
       bucket={bucket}
       fallback={<h1>...</h1>}
-      render={choice => {
-        switch (choice) {
-          case "es":
-            return <h1>Esto es un demo de personalizar en el cliente</h1>;
-          default:
-            return <h1>This is a small client side personalization demo</h1>;
-        }
+      choices={{
+        es: <h1>Esto es un demo de personalizar en el cliente</h1>,
+        en: <h1>This is a small client side personalization demo</h1>
       }}
     />
 
     <Personalized
       bucket={bucket}
       fallback={<p>...</p>}
-      render={choice => {
-        switch (choice) {
-          case "es":
-            return (
-              <p>Implementatondo fixacion de los cookies y con bucketing</p>
-            );
-          default:
-            return (
-              <p>
-                With cookie fixation and both random and function based
-                bucketing
-              </p>
-            );
-        }
+      choices={{
+        es: <p>Implementatondo fixacion de los cookies y con bucketing</p>,
+        en: (
+          <p>
+            With cookie fixation and both random and function based bucketing
+          </p>
+        )
       }}
     />
   </div>

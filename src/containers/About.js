@@ -9,13 +9,9 @@ export default () => (
     <Personalized
       fallback={<div>Loading...</div>}
       bucket={bucket}
-      render={choice => {
-        switch (choice) {
-          case "a":
-            return <h1>This is what we're all about</h1>;
-          case "b":
-            return <h1>React Static is all about:</h1>;
-        }
+      choices={{
+        a: <h1>This is what we're all about</h1>,
+        b: <h1>React Static is all about:</h1>
       }}
     />
     <p>

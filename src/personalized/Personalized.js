@@ -88,7 +88,7 @@ export default class Personalized extends Component {
     const { fallback } = this.props;
 
     return choice
-      ? this.props.render(choice)
+      ? this.props.choices[choice]
       : fallback || <div className="personalized-fallback" />;
   }
 }
