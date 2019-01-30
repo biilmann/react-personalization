@@ -1,2 +1,4 @@
 /locale.json /locale-es.json 200 Language=es
 /locale.json /locale-en.json 200
+
+/netlify/* https://www.netlify.com/:splat 200
